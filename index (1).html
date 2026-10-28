@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fbf9f4">
+<title>Advisory · Personal Branding &amp; LinkedIn Strategy</title>
+<meta name="description" content="Stop blending in. Start standing out. Personal branding and LinkedIn strategy for founders and executive leaders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf9f4; --bg2:#f5f3ee; --bg3:#f0eee9; --bg4:#eae8e3; --line:#e4e2dd;
+  --navy:#021024; --navy2:#17253a; --gold:#755a27; --gold-l:#fdd799; --gold-xl:#ffdea9;
+  --text:#44474d; --muted:#75777d; --slate:#7e8ca6; --ink:#1b1c19; --on-gold:#271900;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --shadow-sm:0 1px 1px rgba(0,0,0,.05);
+  --shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.625;
+  padding-top:64px;padding-bottom:calc(64px + env(safe-area-inset-bottom,0px));-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+section[id],div[id]{scroll-margin-top:72px}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sec{padding:48px 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Type */
+.eyebrow{margin:0;font-size:11px;line-height:14px;font-weight:600;letter-spacing:1.1px;text-transform:uppercase;color:var(--gold)}
+.h2{margin:4px 0 0;font-family:var(--serif);font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.33;color:var(--navy)}
+.lead{margin:8px 0 0;font-size:15px;line-height:1.625;letter-spacing:.075px;color:var(--text)}
+.head{max-width:760px}
+.head.center{margin-left:auto;margin-right:auto;text-align:center}
+
+/* Buttons */
+.btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:52px;padding:14px 16px;border-radius:4px;
+  font-size:17px;line-height:24px;font-weight:600;text-align:center;border:0;box-shadow:var(--shadow-sm);transition:transform .15s,filter .15s,background .15s}
+.btn svg{flex:none}
+.btn:hover{filter:brightness(1.08)}
+.btn:active{transform:translateY(1px)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-soft{background:var(--bg3);color:var(--navy)}
+.btn-mid{background:var(--bg4);color:var(--navy)}
+.btn-gold{background:var(--gold-l);color:var(--on-gold)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* Header */
+.header{position:fixed;inset:0 0 auto 0;z-index:60;height:64px;background:rgba(251,249,244,.85);
+  -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);box-shadow:0 1px 12px rgba(23,37,58,.03)}
+.header .in{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;max-width:1280px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:8px}
+.brand .av{width:24px;height:32px;border-radius:2px;overflow:hidden;background:linear-gradient(160deg,#d9b9a5,#a46b85)}
+.brand .av img{width:100%;height:100%;object-fit:cover}
+.brand b{display:block;font-size:17px;line-height:17px;font-weight:600;letter-spacing:-.425px;color:var(--navy)}
+.brand small{display:block;margin-top:2px;font-size:11px;line-height:14px;font-weight:600;letter-spacing:1.1px;text-transform:uppercase;color:var(--gold)}
+.hdr-actions{display:flex;align-items:center;gap:4px}
+.hdr-user{width:32px;height:32px;margin-right:4px;border-radius:12px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center}
+.icon-btn{width:44px;height:44px;border:0;background:transparent;border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--navy)}
+
+/* Drawer */
+.overlay{position:fixed;inset:0;z-index:70;background:rgba(2,16,36,.4);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:80;width:min(320px,100%);background:var(--bg);padding:20px;display:flex;flex-direction:column;justify-content:space-between;
+  transform:translateX(105%);transition:transform .3s ease;box-shadow:0 8px 16px rgba(23,37,58,.12);visibility:hidden}
+body.menu-open .overlay{opacity:1;visibility:visible}
+body.menu-open .drawer{transform:none;visibility:visible}
+body.menu-open{overflow:hidden}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:28px}
+.drawer-top span{font-size:17px;font-weight:600;color:var(--navy);line-height:24px}
+.drawer nav{display:flex;flex-direction:column;gap:16px}
+.drawer nav a{font-family:var(--serif);font-weight:600;font-size:22px;line-height:30px;color:var(--navy)}
+.drawer nav a:hover{color:var(--gold)}
+.drawer-bottom{display:flex;flex-direction:column;gap:16px;padding-top:48px}
+.drawer-bottom .btn{padding:8px 16px;min-height:40px}
+.drawer-bottom p{margin:0;text-align:center;font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;color:var(--muted)}
+
+/* Hero */
+.hero{padding:16px 0 48px;background:var(--bg)}
+.hero-grid{display:grid;gap:28px}
+.hero-copy{display:flex;flex-direction:column;gap:28px}
+.hero .tag{display:flex;align-items:center;gap:8px}
+.hero .dot{width:6px;height:6px;border-radius:12px;background:var(--gold);flex:none}
+.hero h1{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(30px,5vw,56px);line-height:1.267;letter-spacing:-.75px;color:var(--navy)}
+.hero h1 em{display:block;font-style:italic;color:var(--gold)}
+.hero .sub{margin:4px 0 0;font-size:17px;line-height:24px;font-weight:500;color:var(--navy2)}
+.hero .lead{margin-top:8px}
+.ctas{display:flex;flex-direction:column;gap:8px}
+.trust-micro{text-align:center;padding:4px 0;display:flex;flex-direction:column;gap:4px}
+.trust-micro strong{font-size:12px;line-height:16px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--gold)}
+.trust-micro span{font-size:13px;line-height:20px;letter-spacing:.13px;color:var(--text)}
+.portrait{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow-md);
+  background:linear-gradient(160deg,#e9d9c9 0%,#b88a8f 55%,#5d4a5e 100%)}
+.portrait>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(2,16,36,.8),rgba(2,16,36,.1) 50%,rgba(2,16,36,0))}
+.portrait figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px;display:flex;flex-direction:column;gap:4px}
+.portrait .bar{width:32px;height:2px;border-radius:12px;background:var(--gold-l);margin-bottom:4px}
+.portrait q{quotes:none;font-size:17px;line-height:24px;font-weight:600;color:#fff}
+.portrait small{font-size:11px;line-height:14px;font-weight:600;letter-spacing:1.1px;text-transform:uppercase;color:var(--gold-xl)}
+
+/* Stats */
+.achievements{background:var(--bg2)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}
+.stat{background:#fff;border-radius:4px;box-shadow:var(--shadow-sm);padding:16px;min-height:119px;display:flex;flex-direction:column;justify-content:space-between}
+.stat .n{font-family:var(--serif);font-weight:600;font-size:30px;line-height:38px;letter-spacing:-.3px;color:var(--navy)}
+.stat:nth-child(even) .n{color:var(--gold)}
+.stat b{display:block;margin-top:8px;font-size:17px;line-height:21px;font-weight:600;color:var(--navy)}
+.stat span{display:block;font-size:13px;line-height:20px;letter-spacing:.13px;color:var(--text)}
+.note{display:flex;gap:6px;align-items:flex-start;margin-top:28px;padding:8px;border-radius:4px;background:var(--bg3);font-size:13px;line-height:18px;letter-spacing:.13px;color:var(--text)}
+.note svg{flex:none;margin-top:1px;color:var(--gold)}
+
+/* About */
+.about{background:var(--bg)}
+.about-box{margin-top:28px;background:var(--bg2);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:16px}
+.about-box p{margin:0;font-size:15px;line-height:1.625;letter-spacing:.075px;color:var(--ink)}
+.about-box blockquote{margin:0;background:#fff;border-radius:4px;padding:16px;font-family:var(--serif);font-weight:600;font-style:italic;font-size:22px;line-height:1.375;color:var(--navy)}
+.cards{display:grid;gap:8px;margin-top:28px}
+.card{background:#fff;border-radius:4px;box-shadow:var(--shadow-sm);padding:16px}
+.card .tagline{display:flex;align-items:center;gap:6px;color:var(--gold);font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase}
+.card h3{margin:6px 0 4px;font-size:17px;line-height:24px;font-weight:600;color:var(--navy)}
+.card p{margin:0;font-size:13px;line-height:20px;letter-spacing:.13px;color:var(--text)}
+.about-cta{margin-top:28px}
+
+/* How it works */
+.how{background:var(--bg2)}
+.timeline{display:flex;flex-direction:column;gap:16px;margin:28px auto 0;padding-left:12px;max-width:760px}
+.step{display:flex;gap:16px;align-items:stretch}
+.rail{display:flex;flex-direction:column;align-items:center;flex:none;width:32px}
+.badge{width:32px;height:32px;border-radius:12px;background:var(--gold);color:#fff;box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;letter-spacing:.96px}
+.rail i{display:block;width:2px;flex:1;margin-top:8px;margin-bottom:-24px;background:var(--gold-l);border-radius:2px}
+.step:last-child .rail i{display:none}
+.step .card{flex:1;min-width:0}
+.step .card .k{margin:0;font-size:11px;line-height:14px;font-weight:600;letter-spacing:1.1px;text-transform:uppercase;color:var(--gold)}
+.step .card h3{margin:2px 0 3px}
+.step .card p{line-height:21px}
+.closing{margin-top:28px;background:var(--bg3);border-radius:4px;padding:14px 8px;text-align:center;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--navy)}
+
+/* Lead capture */
+.lead-sec{background:var(--bg3)}
+.lead-grid{display:grid;gap:28px}
+.trust-pts{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.trust-pts li{display:flex;align-items:center;gap:8px;font-size:13px;line-height:20px;font-weight:500;letter-spacing:.13px;color:var(--navy)}
+.trust-pts svg{flex:none;color:var(--gold)}
+.form-card{background:#fff;border-radius:8px;padding:16px;box-shadow:var(--shadow-md)}
+.form-card h3{margin:0;font-size:20px;line-height:28px;font-weight:600;letter-spacing:-.2px;color:var(--navy)}
+.form-card .hint{margin:2px 0 0;font-size:13px;line-height:20px;letter-spacing:.13px;color:var(--text)}
+.form-card form{display:flex;flex-direction:column;gap:16px;margin-top:16px}
+.field label.lb{display:block;margin-bottom:4px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.96px;color:var(--navy)}
+.input{width:100%;background:var(--bg2);border:1px solid transparent;border-radius:4px;padding:13px 12px 14px;font:400 15px/1.3 var(--sans);letter-spacing:.075px;color:var(--navy);transition:border-color .15s,box-shadow .15s}
+.input::placeholder{color:var(--muted)}
+.input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(117,90,39,.15)}
+.input.err{border-color:#ba1a1a}
+.phone{display:flex;gap:8px}
+.cc{flex:none;width:80px;background:var(--bg3);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;letter-spacing:.075px;color:var(--navy)}
+.consent{display:flex;gap:10px;align-items:flex-start;padding-top:4px;font-size:13px;line-height:21px;letter-spacing:.13px;color:var(--text);cursor:pointer}
+.consent input{flex:none;width:16px;height:16px;margin:3px 0 0;accent-color:var(--navy)}
+.msg{margin:0;padding:10px 12px;border-radius:4px;font-size:13px;line-height:20px;display:none}
+.msg.show{display:block}
+.msg.ok{background:#e8f1e6;color:#1d4d1d}
+.msg.bad{background:#fbe9e7;color:#8a1c14}
+.form-card .btn{margin-top:4px}
+.btn[disabled]{opacity:.7;cursor:progress}
+
+/* Pricing */
+.pay{background:var(--navy);text-align:center}
+.pay .eyebrow{color:var(--gold-xl)}
+.pay .h2{color:#fff}
+.pay .h2 em{font-style:italic;color:var(--gold-l)}
+.pay .lead{color:var(--slate);max-width:384px;margin:8px auto 0}
+.price-card{position:relative;overflow:hidden;max-width:560px;margin:28px auto 0;background:var(--navy2);border-radius:8px;padding:28px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;align-items:center}
+.price-card::before{content:"";position:absolute;top:-48px;right:-48px;width:128px;height:128px;border-radius:12px;background:rgba(117,90,39,.2);filter:blur(40px);pointer-events:none}
+.price-card>*{position:relative}
+.pill{display:inline-block;padding:4px 12px;border-radius:12px;background:var(--gold);color:#fff;font-size:11px;line-height:14px;font-weight:600;letter-spacing:1.1px;text-transform:uppercase}
+.price{display:flex;align-items:baseline;gap:4px;padding:8px 0}
+.price b{font-family:var(--serif);font-weight:600;font-size:38px;line-height:46px;letter-spacing:-.57px;color:var(--gold-l)}
+.price span{font-size:13px;line-height:20px;letter-spacing:.13px;color:var(--slate)}
+.price-card .q{margin:0 0 16px;font-size:17px;line-height:24px;font-weight:600;color:#fff}
+.scope{width:100%;background:rgba(2,16,36,.4);border-radius:4px;padding:8px;display:flex;flex-direction:column;gap:8px;text-align:left;margin-bottom:16px}
+.scope div{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:16.25px;letter-spacing:.13px;color:#fff}
+.scope svg{flex:none;margin-top:1px;color:var(--gold-l)}
+.scope b{font-weight:700}
+.fine{margin-top:16px;display:flex;flex-direction:column;gap:4px;font-size:11px;line-height:14px}
+.fine strong{font-weight:500;letter-spacing:.55px;text-transform:uppercase;color:var(--gold-xl)}
+.fine span{font-weight:600;letter-spacing:.5px;color:rgba(126,140,166,.8)}
+
+/* Testimonials */
+.reviews{background:var(--bg)}
+.reviews .grid{display:grid;gap:16px;margin-top:28px}
+.t-card{background:#fff;border-radius:8px;box-shadow:var(--shadow-sm);padding:28px;display:flex;flex-direction:column;gap:8px}
+.stars{display:flex;gap:2px;color:var(--gold)}
+.t-card blockquote{margin:0;font-family:var(--serif);font-weight:600;font-style:italic;font-size:22px;line-height:1.375;color:var(--navy);flex:1}
+.t-card .who{padding-top:8px}
+.t-card .who b{display:block;font-size:17px;line-height:24px;font-weight:600;color:var(--navy)}
+.t-card .who span{display:block;margin-top:2px;font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;color:var(--gold)}
+.tagbar{margin-top:28px;background:var(--bg2);border-radius:4px;padding:14px 8px;text-align:center;font-size:11px;line-height:14px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;color:var(--gold)}
+
+/* FAQ */
+.faq{background:var(--bg2)}
+.acc{display:flex;flex-direction:column;gap:4px;margin-top:28px;max-width:860px}
+.faq .head{max-width:860px}
+.acc-item{background:#fff;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.05);overflow:hidden}
+.acc-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;background:none;border:0;text-align:left;font-size:17px;line-height:24px;font-weight:500;color:var(--navy)}
+.acc-btn svg{flex:none;transition:transform .25s;color:var(--navy)}
+.acc-item.open .acc-btn svg{transform:rotate(180deg)}
+.acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.acc-item.open .acc-panel{grid-template-rows:1fr}
+.acc-panel>div{overflow:hidden}
+.acc-panel p{margin:0;padding:0 16px 16px;font-size:13px;line-height:21px;letter-spacing:.13px;color:var(--text)}
+
+/* Final CTA */
+.final{background:var(--navy);text-align:center}
+.final .eyebrow{color:var(--gold-xl)}
+.final .h2{color:#fff}
+.final .h2 em{display:block;font-style:italic;color:var(--gold-l)}
+.final .lead{color:var(--slate);max-width:384px;margin:8px auto 0}
+.final .btn{max-width:320px;margin:28px auto 0;padding:16px 28px;box-shadow:var(--shadow-md)}
+.final .micro{margin:28px 0 0;font-size:11px;line-height:14px;font-weight:600;letter-spacing:1.1px;text-transform:uppercase;color:var(--gold-xl)}
+
+/* Footers */
+.foot1{background:var(--bg3);padding:28px 16px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.foot1 b{display:block;font-size:17px;line-height:24px;font-weight:700;letter-spacing:-.425px;color:var(--navy)}
+.foot1 p{margin:3px auto 0;max-width:320px;font-size:13px;line-height:21px;letter-spacing:.13px;color:var(--text)}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px}
+.links a{font-size:12px;line-height:16px;font-weight:500;letter-spacing:.96px;color:var(--gold)}
+.links a:hover{text-decoration:underline}
+.copy{margin:0;font-size:11px;line-height:14px;font-weight:600;letter-spacing:1.1px;color:var(--muted)}
+.foot2-wrap{padding-top:48px;background:var(--bg)}
+.foot2{background:var(--bg2);padding:48px 16px}
+.foot2 .box{max-width:448px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center}
+.foot2 h4{margin:0;font-size:20px;line-height:28px;font-weight:600;letter-spacing:-.5px;color:var(--navy)}
+.foot2 .box>div>p{margin:4px 0 0;font-size:13px;line-height:20px;letter-spacing:.13px;color:var(--text)}
+.foot2 .links{gap:4px 28px}
+.foot2 .links a{font-weight:600}
+.foot2 hr{width:64px;height:1px;border:0;margin:0;background:var(--line)}
+.foot2 .copy span{display:block;margin-top:4px}
+
+/* Bottom nav (mobile) */
+.bnav{position:fixed;inset:auto 0 0 0;z-index:60;background:rgba(251,249,244,.9);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);
+  box-shadow:0 -2px 12px rgba(23,37,58,.04);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bnav .in{height:64px;display:flex;align-items:center;justify-content:space-around;padding:0 16px}
+.bnav a{width:56px;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--text)}
+.bnav a span{font-size:11px;line-height:14px;font-weight:600;letter-spacing:.2px}
+.bnav a.active{color:var(--navy)}
+
+/* Tablet / Desktop */
+@media (min-width:600px){
+  .ctas{flex-direction:row;flex-wrap:wrap}
+  .ctas .btn{width:auto;flex:1 1 240px}
+  .cards.three,.reviews .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .price-card{padding:40px}
+}
+@media (min-width:768px){
+  body{padding-bottom:0}
+  .bnav{display:none}
+  .wrap{padding:0 32px}
+  .header .in{padding:0 32px}
+  .sec{padding:80px 0}
+  .hero{padding:48px 0 80px}
+  .about-cta .btn{max-width:360px;margin:0 auto}
+  .form-card{padding:32px}
+  .foot1{padding:36px 32px}
+}
+@media (min-width:960px){
+  .hero-grid{grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero-copy{gap:32px}
+  .hero .trust-micro{text-align:left}
+  .ctas .btn{flex:0 1 auto;min-width:260px}
+  .portrait{max-width:520px;width:100%;justify-self:end}
+  .portrait figcaption{padding:24px}
+  .about-box{flex-direction:row;align-items:stretch;padding:24px;gap:24px}
+  .about-box>p{flex:1;align-self:center}
+  .about-box blockquote{flex:1;font-size:24px;padding:24px}
+  .cards.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .reviews .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .t-card blockquote{font-size:19px}
+  .lead-grid{grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .lead-intro{position:sticky;top:96px}
+  .trust-pts{margin-top:28px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <div class="in">
+    <a class="brand" href="#top" aria-label="Advisory – Personal Branding">
+      <span class="av"><img src="https://www.figma.com/api/mcp/asset/c46da709-f2ef-46a4-a77f-da1beda1561f/f5887.png" alt="" data-fallback="images/avatar.png"></span>
+      <span>
+        <b>ADVISORY</b>
+        <small>PERSONAL BRANDING</small>
+      </span>
+    </a>
+    <div class="hdr-actions">
+      <a class="hdr-user" href="#lead-capture" aria-label="Get in touch">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg>
+      </a>
+      <button class="icon-btn" id="menuOpen" aria-label="Toggle Navigation Menu" aria-controls="drawer" aria-expanded="false">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 1h16M1 6h16M1 11h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SLIDE-IN MENU (Aside) ============ -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Site index" aria-hidden="true">
+  <div>
+    <div class="drawer-top">
+      <span>Index</span>
+      <button class="icon-btn" id="menuClose" aria-label="Close Navigation Menu">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 1l12 12M13 1L1 13"/></svg>
+      </button>
+    </div>
+    <nav>
+      <a href="#top">Overview</a>
+      <a href="#about">Philosophy</a>
+      <a href="#results">Selected Results</a>
+      <a href="#testimonials">Endorsements</a>
+      <a href="#faqs">Inquiries &amp; FAQs</a>
+    </nav>
+  </div>
+  <div class="drawer-bottom">
+    <a class="btn btn-dark" href="#lead-capture">Let’s Build Your Brand
+      <svg width="12.5" height="12.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M13 5l7 7-7 7"/></svg>
+    </a>
+    <p>STRICTLY CONFIDENTIAL ADVISORY</p>
+  </div>
+</aside>
+
+<main id="top">
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="tag"><span class="dot"></span><p class="eyebrow">PERSONAL BRANDING · LINKEDIN STRATEGY</p></div>
+      <div>
+        <h1>Stop Blending In.<em>Start Standing Out.</em></h1>
+        <p class="sub">Your Expertise Deserves to Be Seen.</p>
+        <p class="lead">You have the skills. You have the story. Now, let’s make sure the right people know your name. From a profile that speaks volumes to content that builds connections, let’s turn your LinkedIn presence into a personal brand that opens doors.</p>
+      </div>
+      <div class="ctas">
+        <a class="btn btn-dark" href="#lead-capture">Let’s Build Your LinkedIn Presence
+          <svg width="11.25" height="11.25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-soft" href="#about">See How I Can Help
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+        </a>
+      </div>
+      <div class="trust-micro">
+        <strong>BE VISIBLE. BE VALUABLE. BE UNFORGETTABLE.</strong>
+        <span>Personalised strategy. Meaningful connections. Sustainable growth.</span>
+      </div>
+    </div>
+
+    <figure class="portrait" style="margin:0">
+      <img src="https://www.figma.com/api/mcp/asset/c46da709-f2ef-46a4-a77f-da1beda1561f/d86f2.png" alt="Strategic personal branding consultant" data-fallback="images/hero-portrait.png">
+      <figcaption>
+        <span class="bar"></span>
+        <q>“Your story. Your strategy. Your growth.”</q>
+        <small>BESPOKE ADVISORY PRACTICE</small>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 2. ACHIEVEMENTS ============ -->
+<section class="sec achievements" id="results">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">THE IMPACT</p>
+      <h2 class="h2">Results That Speak.<br>Milestones That Matter.</h2>
+      <p class="lead">Your LinkedIn journey shouldn’t be measured by likes alone. It should be measured by the right connections, meaningful conversations, and opportunities that move you forward.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">150+</div><div><b>Brands Built</b><span>Tailored positioning</span></div></div>
+      <div class="stat"><div class="n">2.4M+</div><div><b>Reached</b><span>Qualified audience</span></div></div>
+      <div class="stat"><div class="n">400+</div><div><b>Strategies</b><span>High-resonance copy</span></div></div>
+      <div class="stat"><div class="n">310%</div><div><b>Avg Growth</b><span>Executive visibility</span></div></div>
+    </div>
+    <div class="note">
+      <svg width="13.3" height="16.7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+      <span>Customized outcomes tailored to individual executive &amp; founder benchmarks.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. ABOUT ============ -->
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">MORE THAN A PROFILE</p>
+      <h2 class="h2">Your Work Speaks.<br>Let’s Make Your LinkedIn Speak Louder.</h2>
+    </div>
+    <div class="about-box">
+      <p>Your expertise deserves more than a profile that simply exists. It deserves a presence that communicates your value, tells your story, and connects you with the right people.</p>
+      <blockquote>“My approach combines thoughtful positioning, strategic content, and a clear understanding of your goals to help you show up on LinkedIn with confidence.”</blockquote>
+    </div>
+    <div class="cards three">
+      <article class="card">
+        <div class="tagline">
+          <svg width="16.7" height="16.7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+          01 · PROFILE POSITIONING
+        </div>
+        <h3>First Glance Clarity</h3>
+        <p>Make your experience, strengths, and value clear at first glance to decision-makers.</p>
+      </article>
+      <article class="card">
+        <div class="tagline">
+          <svg width="15" height="13.3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H8l-5 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          02 · CONTENT STRATEGY
+        </div>
+        <h3>Resonant Thought Leadership</h3>
+        <p>Share ideas that reflect your expertise and start meaningful executive conversations.</p>
+      </article>
+      <article class="card">
+        <div class="tagline">
+          <svg width="16.7" height="10" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 13l8-8 5 5 9-9"/><path d="M16 1h7v7"/></svg>
+          03 · PERSONAL BRAND GROWTH
+        </div>
+        <h3>Sustainable Authority</h3>
+        <p>Build a consistent presence that helps the right audience recognise and reward your value.</p>
+      </article>
+    </div>
+    <div class="about-cta">
+      <a class="btn btn-mid" href="#how-it-works">Explore My Approach
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. HOW IT WORKS ============ -->
+<section class="sec how" id="how-it-works">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">THE PROCESS</p>
+      <h2 class="h2">Simple Steps.<br>Smarter Strategy. Stronger Presence.</h2>
+    </div>
+    <div class="timeline">
+      <div class="step">
+        <div class="rail"><div class="badge">01</div><i></i></div>
+        <div class="card"><p class="k">DISCOVERY</p><h3>Understand</h3><p>We begin with your goals, your expertise, and the audience you want to reach.</p></div>
+      </div>
+      <div class="step">
+        <div class="rail"><div class="badge">02</div><i></i></div>
+        <div class="card"><p class="k">ARCHITECTURE</p><h3>Strategise</h3><p>Together, we identify the right positioning, content direction, and opportunities for growth.</p></div>
+      </div>
+      <div class="step">
+        <div class="rail"><div class="badge">03</div></div>
+        <div class="card"><p class="k">EXECUTION</p><h3>Grow</h3><p>Show up with greater clarity, build meaningful connections, and improve your LinkedIn presence consistently.</p></div>
+      </div>
+    </div>
+    <div class="closing">CLEAR DIRECTION. CONSISTENT ACTION. MEANINGFUL PROGRESS.</div>
+  </div>
+</section>
+
+<!-- ============ 5. LEAD CAPTURE FORM ============ -->
+<section class="sec lead-sec" id="lead-capture">
+  <div class="wrap lead-grid">
+    <div class="lead-intro">
+      <p class="eyebrow">LET’S START WITH YOU</p>
+      <h2 class="h2">Let’s Start With Your Name.<br>Let’s Build Your Brand.</h2>
+      <p class="lead">Your name is more than a detail — it’s the beginning of your professional story. Share a few details, and let’s take the first step towards a stronger LinkedIn presence.</p>
+      <ul class="trust-pts" style="margin-top:28px">
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>A personalised experience.</li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>Clear next steps.</li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>Your details handled responsibly.</li>
+      </ul>
+    </div>
+
+    <div class="form-card">
+      <h3>Tell Us a Little About Yourself</h3>
+      <p class="hint">It takes less than a minute to get started.</p>
+      <form id="leadForm" novalidate>
+        <div class="field">
+          <label class="lb" for="name">Full Name *</label>
+          <input class="input" id="name" name="name" type="text" placeholder="e.g. Eleanor Vance" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label class="lb" for="email">Email Address *</label>
+          <input class="input" id="email" name="email" type="email" placeholder="name@organization.com" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label class="lb" for="phone">Mobile Number *</label>
+          <div class="phone">
+            <div class="cc" aria-hidden="true">+91</div>
+            <input class="input" id="phone" name="phone" type="tel" inputmode="numeric" placeholder="98765 43210" autocomplete="tel-national" maxlength="12" required>
+          </div>
+        </div>
+        <label class="consent">
+          <input type="checkbox" id="consent" required>
+          <span>I agree to be contacted regarding my enquiry and understand how my information will be used in accordance with the Advisory Confidentiality Policy.</span>
+        </label>
+        <p class="msg" id="formMsg" role="status" aria-live="polite"></p>
+        <button class="btn btn-dark" type="submit" id="submitBtn">
+          <span id="submitLabel">Continue to Your Next Step</span>
+          <svg width="11.25" height="11.25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M13 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. ₹1 INTRODUCTORY PAYMENT ============ -->
+<section class="sec pay" id="intro-payment">
+  <div class="wrap">
+    <div class="head center">
+      <p class="eyebrow">YOUR FIRST STEP STARTS HERE</p>
+      <h2 class="h2">One Rupee. One First Step.<br><em>A World of Possibilities.</em></h2>
+      <p class="lead">Building your personal brand doesn’t have to begin with a big investment. Start small, take the first step, and discover how a more intentional LinkedIn presence can change the way people see your professional story.</p>
+    </div>
+    <div class="price-card">
+      <span class="pill">INTRODUCTORY OFFER</span>
+      <div class="price"><b>₹1</b><span>/ one-time</span></div>
+      <p class="q">“A small beginning. A more intentional direction.”</p>
+      <div class="scope">
+        <div>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+          <span><b>Includes:</b> 15-Minute Executive Profile Diagnostic</span>
+        </div>
+        <div>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+          <span>Personalized Quick-Win Action Blueprint delivered to your inbox</span>
+        </div>
+      </div>
+      <!-- PAYMENT LINK: the ₹1 button -->
+      <a class="btn btn-gold" id="payBtn" href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener noreferrer">
+        Proceed with ₹1 Verification
+        <svg width="12" height="15.75" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="11" rx="2"/><path d="M8 10.5V7a4 4 0 018 0v3.5"/></svg>
+      </a>
+      <div class="fine">
+        <strong>SECURE PAYMENT · TRANSPARENT TERMS</strong>
+        <span>Please review the offer details and applicable terms before proceeding.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. TESTIMONIALS ============ -->
+<section class="sec reviews" id="testimonials">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">WORDS THAT MATTER</p>
+      <h2 class="h2">Don’t Just Take Our Word for It.</h2>
+      <p class="lead">The real story isn’t what we say about our work. It’s what our clients experience, achieve, and share along the way.</p>
+    </div>
+    <div class="grid">
+      <article class="t-card">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+        </div>
+        <blockquote>“I always knew I had something valuable to share, but I didn’t know how to communicate it on LinkedIn. The strategy gave me clarity, direction, and the confidence to show up consistently. My profile finally feels like me.”</blockquote>
+        <div class="who"><b>Aarav Singhania</b><span>FINTECH FOUNDER · MUMBAI</span></div>
+      </article>
+      <article class="t-card">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+        </div>
+        <blockquote>“The profile positioning gave our venture direct inbound opportunities from investors and partners within four weeks. The clarity was transformative.”</blockquote>
+        <div class="who"><b>Devika Sharma</b><span>MANAGING PARTNER · DELHI</span></div>
+      </article>
+      <article class="t-card">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+          <svg width="15" height="14.25" viewBox="0 0 24 23" fill="currentColor"><path d="M12 .6l3.4 7.2 7.8 1-5.7 5.4 1.5 7.8L12 18.2l-7 3.8 1.5-7.8L.8 8.8l7.8-1z"/></svg>
+        </div>
+        <blockquote>“Translating years of corporate expertise into a resonant executive voice seemed daunting. The structured steps made it natural and effortless.”</blockquote>
+        <div class="who"><b>Rohan Mehra</b><span>VP OF MARKETING · BENGALURU</span></div>
+      </article>
+    </div>
+    <div class="tagbar">VERIFIED CLIENT FEEDBACK · EDITABLE PLACEHOLDERS</div>
+  </div>
+</section>
+
+<!-- ============ 8. FAQ ============ -->
+<section class="sec faq" id="faqs">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">NEED CLARITY?</p>
+      <h2 class="h2">Good Questions Deserve Clear Answers.</h2>
+      <p class="lead">Every great professional journey begins with a little curiosity. Here are a few things you might want to know before we get started.</p>
+    </div>
+    <div class="acc" id="acc">
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false"><span>What exactly does a LinkedIn Strategist do?</span><svg width="12.8" height="12.8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"/></svg></button>
+        <div class="acc-panel"><div><p>A LinkedIn strategist helps you position your profile, shape your content direction, and build visibility with the right audience, so your expertise is clear to the people who matter.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false"><span>Is this service suitable for beginners?</span><svg width="12.8" height="12.8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"/></svg></button>
+        <div class="acc-panel"><div><p>Yes. Whether you are just getting started or already established, we begin with your goals and build from where you are today.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false"><span>How soon will I see results?</span><svg width="12.8" height="12.8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"/></svg></button>
+        <div class="acc-panel"><div><p>Every journey is different. Clarity in your profile and direction often comes early, while visibility and connections build through consistent action over time.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false"><span>What does the ₹1 payment include?</span><svg width="12.8" height="12.8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"/></svg></button>
+        <div class="acc-panel"><div><p>The ₹1 introductory offer includes a 15-Minute Executive Profile Diagnostic and a Personalized Quick-Win Action Blueprint delivered to your inbox.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false"><span>Will you create content for me?</span><svg width="12.8" height="12.8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"/></svg></button>
+        <div class="acc-panel"><div><p>We work with you on content direction and strategy so that what you share reflects your own voice and expertise.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false"><span>Do you guarantee followers, leads, or clients?</span><svg width="12.8" height="12.8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"/></svg></button>
+        <div class="acc-panel"><div><p>We focus on clarity, positioning, and consistent action. Outcomes depend on many factors, so we do not promise specific numbers of followers, leads, or clients.</p></div></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-btn" aria-expanded="false"><span>How will you contact me after I submit my details?</span><svg width="12.8" height="12.8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"/></svg></button>
+        <div class="acc-panel"><div><p>We will reach out using the email address and mobile number you share, in line with the consent you provide in the form.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. FINAL CTA ============ -->
+<section class="sec final">
+  <div class="wrap">
+    <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+    <h2 class="h2">You’ve Built the Expertise.<em>Now Build the Presence.</em></h2>
+    <p class="lead">Your next opportunity could begin with a profile, a post, or a connection. Let’s make sure you’re ready when it comes.</p>
+    <a class="btn btn-gold" href="#lead-capture">Let’s Make You Unmissable
+      <svg width="11.25" height="11.25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M13 5l7 7-7 7"/></svg>
+    </a>
+    <p class="micro">SHOW UP WITH PURPOSE. CONNECT WITH MEANING. GROW WITH CONFIDENCE.</p>
+  </div>
+</section>
+
+<!-- ============ 10. REFINED FOOTER SUMMARY ============ -->
+<section class="foot1">
+  <div>
+    <b>ADVISORY · STRATEGIST CONSULTING</b>
+    <p>Empowering founders, partners, and high-impact leaders with distinct personal branding architecture.</p>
+  </div>
+  <nav class="links" aria-label="Footer summary">
+    <a href="#top">Top</a>
+    <a href="#about">Philosophy</a>
+    <a href="#how-it-works">Process</a>
+    <a href="#intro-payment">₹1 Diagnostic</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#faqs">FAQs</a>
+  </nav>
+  <p class="copy">© 2025 Boutique Advisory Ltd. All rights reserved. Strictly confidential.</p>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<div class="foot2-wrap">
+  <footer class="foot2">
+    <div class="box">
+      <div>
+        <h4>EXECUTIVE POSITIONING</h4>
+        <p>Discreet, bespoke personal brand architecture for founders and executive leaders.</p>
+      </div>
+      <nav class="links" aria-label="Footer">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#results">Results</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faqs">FAQs</a>
+      </nav>
+      <hr>
+      <p class="copy">© 2025 Boutique Advisory Ltd. All rights reserved.<span>Discretion guaranteed by mutual non-disclosure.</span></p>
+    </div>
+  </footer>
+</div>
+
+<!-- ============ BOTTOM NAV (mobile) ============ -->
+<nav class="bnav" aria-label="Primary">
+  <div class="in">
+    <a href="#top" data-spy="top" class="active">
+      <svg width="20" height="18" viewBox="0 0 24 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 2l10 8.5"/><path d="M4.5 9v11h5v-6h5v6h5V9"/></svg>
+      <span>Overview</span>
+    </a>
+    <a href="#how-it-works" data-spy="how-it-works">
+      <svg width="17.4" height="18.3" viewBox="0 0 24 25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="5" r="3"/><circle cx="19" cy="20" r="3"/><path d="M8 5h6a4 4 0 010 8H10a4 4 0 000 8h6"/></svg>
+      <span>Method</span>
+    </a>
+    <a href="#results" data-spy="results">
+      <svg width="20" height="19" viewBox="0 0 24 23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a6 6 0 006-6V2H6v6a6 6 0 006 6z"/><path d="M6 4H2v3a4 4 0 004 4M18 4h4v3a4 4 0 01-4 4M12 14v5M8 22h8M9 19h6"/></svg>
+      <span>Results</span>
+    </a>
+    <a href="#lead-capture" data-spy="lead-capture">
+      <svg width="14.7" height="18.3" viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1H4a2 2 0 00-2 2v18a2 2 0 002 2h12a2 2 0 002-2V7z"/><path d="M12 1v6h6M6 13h8M6 17h8"/></svg>
+      <span>Apply</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- CONFIG ---------- */
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycby0cwVK2NH5kYSLkO8Rx5CYL3s6dnsCO2NI9hjW0lBNTHz81suBzXr8_Z1J8wHTwtpmbQ/exec";
+
+  /* ---------- Image fallback (local file first, then Figma temp URL) ---------- */
+  document.querySelectorAll("img[data-fallback]").forEach(function (img) {
+    img.addEventListener("error", function onErr() {
+      img.removeEventListener("error", onErr);
+      img.src = img.getAttribute("data-fallback");
+    });
+  });
+
+  /* ---------- Slide-in menu ---------- */
+  var body = document.body;
+  var drawer = document.getElementById("drawer");
+  var openBtn = document.getElementById("menuOpen");
+  function setMenu(open) {
+    body.classList.toggle("menu-open", open);
+    drawer.setAttribute("aria-hidden", open ? "false" : "true");
+    openBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  openBtn.addEventListener("click", function () { setMenu(true); });
+  document.getElementById("menuClose").addEventListener("click", function () { setMenu(false); });
+  document.getElementById("overlay").addEventListener("click", function () { setMenu(false); });
+  drawer.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll(".acc-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var item = btn.parentElement;
+      var open = !item.classList.contains("open");
+      item.classList.toggle("open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+
+  /* ---------- Bottom nav scroll-spy ---------- */
+  var spyLinks = document.querySelectorAll(".bnav a[data-spy]");
+  var spyIds = ["top", "how-it-works", "results", "lead-capture"];
+  function spy() {
+    var y = window.scrollY + window.innerHeight * 0.35;
+    var current = "top";
+    spyIds.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && id !== "top" && el.getBoundingClientRect().top + window.scrollY <= y) current = id;
+    });
+    spyLinks.forEach(function (a) { a.classList.toggle("active", a.getAttribute("data-spy") === current); });
+  }
+  window.addEventListener("scroll", spy, { passive: true });
+  spy();
+
+  /* ---------- Lead form -> Google Sheets (Apps Script) ---------- */
+  var form = document.getElementById("leadForm");
+  var msg = document.getElementById("formMsg");
+  var btn = document.getElementById("submitBtn");
+  var label = document.getElementById("submitLabel");
+  var nameEl = document.getElementById("name");
+  var emailEl = document.getElementById("email");
+  var phoneEl = document.getElementById("phone");
+  var consentEl = document.getElementById("consent");
+
+  function showMsg(text, ok) {
+    msg.textContent = text;
+    msg.className = "msg show " + (ok ? "ok" : "bad");
+  }
+  function clearErr() {
+    [nameEl, emailEl, phoneEl].forEach(function (el) { el.classList.remove("err"); });
+  }
+  function cleanPhone(v) {
+    var d = String(v).replace(/\D/g, "");
+    if (d.length > 10 && d.indexOf("91") === 0) d = d.slice(2);
+    if (d.length === 11 && d.charAt(0) === "0") d = d.slice(1);
+    return d;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    clearErr();
+
+    var name = nameEl.value.trim();
+    var email = emailEl.value.trim();
+    var digits = cleanPhone(phoneEl.value);
+
+    if (name.length < 2) { nameEl.classList.add("err"); nameEl.focus(); return showMsg("Please enter your full name.", false); }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { emailEl.classList.add("err"); emailEl.focus(); return showMsg("Please enter a valid email address.", false); }
+    if (!/^[6-9]\d{9}$/.test(digits)) { phoneEl.classList.add("err"); phoneEl.focus(); return showMsg("Please enter a valid 10-digit Indian mobile number.", false); }
+    if (!consentEl.checked) { consentEl.focus(); return showMsg("Please tick the consent box to continue.", false); }
+
+    var phone = "+91 " + digits;
+
+    btn.disabled = true;
+    label.textContent = "Saving…";
+    msg.className = "msg";
+
+    var url = SCRIPT_URL + "?" + new URLSearchParams({ name: name, email: email, phone: phone });
+
+    fetch(url, { method: "GET", mode: "no-cors" })
+      .then(function () {
+        form.reset();
+        showMsg("Thank you, " + name.split(" ")[0] + "! Your details have been received. Your ₹1 first step is just below.", true);
+        setTimeout(function () {
+          var t = document.getElementById("intro-payment");
+          if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 1400);
+      })
+      .catch(function () {
+        showMsg("Something went wrong while saving your details. Please check your connection and try again.", false);
+      })
+      .then(function () {
+        btn.disabled = false;
+        label.textContent = "Continue to Your Next Step";
+      });
+  });
+})();
+</script>
+</body>
+</html>
